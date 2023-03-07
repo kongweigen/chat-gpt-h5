@@ -1,6 +1,14 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-const question = ref('')
+import { sendChatMsg } from './api/index'
+import { isEmpty } from './utils/index'
+const content = ref('')
+const sendContent = () => {
+  !isEmpty(content.value) && sendChatMsg(content.value)
+}
+const clearContent = () => {
+  content.value = ''
+}
 </script>
 
 <template>
@@ -15,14 +23,20 @@ const question = ref('')
       <div class="ask-item">
         <van-field
           class="ask-item__input"
-          v-model="question"
+          v-model="content"
           placeholder="请输入问题"
         >
           <template #button>
-            <van-button class="mr10" size="small" type="primary"
+            <van-button
+              class="mr10"
+              size="small"
+              type="primary"
+              @click="sendContent"
               >发送</van-button
             >
-            <van-button size="small" type="primary">清除</van-button>
+            <van-button size="small" type="primary" @click="clearContent"
+              >清除</van-button
+            >
           </template>
         </van-field>
       </div>
