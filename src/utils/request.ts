@@ -14,8 +14,8 @@ import { showToast } from 'vant'
 const instance = axios.create({
   headers: {
     'Content-Type': 'application/json; charset=utf-8',
-    Authorization: 'Bearer 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',
-    'OpenAI-Organization': 'org-UuTnkIgweGzkbAqgYfNHS9t6'
+    Authorization: 'Bearer -----',
+    'OpenAI-Organization': '-----'
   }
 })
 
